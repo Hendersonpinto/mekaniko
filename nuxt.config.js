@@ -4,11 +4,18 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'mecanico',
+    title: 'Los mejores talleres mecánicos de Chile en un solo lugar.',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' }
+      { hid: 'description', name: 'description', content: 'Descubre, repara tu auto y compara precios de los mejores talleres mecánicos en Chile. En nuestra plataforma puedes cotizar, reservar y pagar servicios mecanicos para reparar tu auto. ' },
+      { hid: 'og:url', property: 'og:url', content: 'https://mekaniko.cl' },
+      { hid: 'og:title', property: 'og:title', content: 'Descubre, repara tu auto y compara precios en los mejores talleres mecánicos de Chile' },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:image', property: 'og:image', content: 'https://mekaniko.cl/fb.png' },
+      { hid: 'og:image:secure_url', property: 'og:image:secure_url', content: 'https://mekaniko.cl/fb.png' },
+      { hid: 'og:description', property: 'og:description', content: 'Descubre, repara tu auto y compara precios en los mejores talleres mecánicos de Chile' },
+      { hid: 'og:site_name', property: 'og:site_name', content: 'mekaniko' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -49,7 +56,13 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      lang: 'es',
+      name: 'Los mejores talleres mecanicos de Chile',
+      short_name: 'mekaniko',
+      background_color: '#333',
+      start_url: '/',
+      theme_color: '#333',
+      display: 'fullscreen'
     }
   },
 
