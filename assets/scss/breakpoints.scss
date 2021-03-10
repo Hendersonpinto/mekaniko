@@ -1,0 +1,43 @@
+@mixin screenSizes($size) {
+  @if $size == phoneSmall {
+    @media (max-width: 375px) and (max-height: 470px) {
+      @content;
+    }
+  }
+
+  @else if $size == phoneThin {
+    @media (max-width: 330px) {
+      @content;
+    }
+  }
+
+  @else if $size == phone {
+    @media (max-width: 490px) {
+      @content;
+    }
+  }
+
+  @else if $size == tablet {
+    @media (max-width: 1000px) {
+      @content;
+    }
+  }
+
+  @else if $size == desktop {
+    @media (min-width: 1024px) and (max-width: 1480px) {
+      @content;
+    }
+  }
+
+  @else if $size == desktopLarge {
+    @media (min-width: 1500px) and (max-width: 1850px) {
+      @content;
+    }
+  }
+
+  @else if $size == desktopExtraLarge {
+    @media (min-width: 1851px) {
+      @content;
+    }
+  }
+}

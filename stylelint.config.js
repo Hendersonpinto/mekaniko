@@ -20,7 +20,12 @@ module.exports = {
           'apply',
           'variants',
           'responsive',
-          'screen'
+          'screen',
+          'include',
+          'mixin',
+          'if',
+          'else if',
+          'else'
         ]
       }
     ],

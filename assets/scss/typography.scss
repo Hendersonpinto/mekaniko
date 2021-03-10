@@ -1,0 +1,97 @@
+@font-face {
+  font-family: 'Circular';
+  font-weight: bold;
+  src:
+    url('~assets/fonts/CircularAirPro-Bold-Small.woff2') format('woff2'),
+    url('~assets/fonts/CircularAirPro-Bold-Small.woff') format('woff2');
+}
+
+@font-face {
+  font-family: 'Circular';
+  font-weight: normal;
+  src:
+    url('~assets/fonts/CircularAirPro-Book-Small.woff2') format('woff2'),
+    url('~assets/fonts/CircularAirPro-Book-Small.woff') format('woff2');
+}
+
+html {
+  color: black;
+  font-family: 'Circular', sans-serif;
+  font-size: 62.5%;
+  font-weight: normal;
+  line-height: 140%;
+  text-align: left;
+  background-color: white;
+  transition: background-color 500ms ease-in-out;
+  overflow: hidden;
+
+  &.dark-mode {
+    color: white;
+    background-color: black;
+  }
+}
+
+h1 {
+  font-size: 4.2rem; // 71px
+  font-weight: normal;
+  line-height: 120%;
+  letter-spacing: 0;
+
+  @include screenSizes(phone) {
+    font-size: 3rem;
+    line-height: 100%;
+  }
+}
+
+h2 {
+  font-weight: normal;
+  font-size: 3rem;
+
+  @include screenSizes(phone) {
+    font-size: 1.8rem;
+  }
+}
+
+h3 {
+  font-weight: normal;
+  font-size: 1.8rem;
+  color: #494949;
+}
+
+p {
+  font-weight: normal;
+  font-size: 1.6rem;
+}
+
+button {
+  font-family: 'Circular', sans-serif;
+  appearance: none;
+  background: none;
+  padding: 0;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.7s;
+}
+
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+}
+
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.7s;
+}
+
+.layout-enter,
+.layout-leave-active {
+  opacity: 0;
+}

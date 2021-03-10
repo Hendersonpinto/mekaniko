@@ -24,6 +24,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    '~/assets/scss/typography.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -39,7 +40,9 @@ export default {
     '@nuxt/typescript-build',
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
-    '@nuxtjs/tailwindcss'
+    '@nuxtjs/tailwindcss',
+    '@nuxtjs/style-resources'
+
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -68,5 +71,25 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  styleResources: {
+    scss: [
+      './assets/scss/colors.scss',
+      './assets/scss/breakpoints.scss'
+    ]
   }
+
+  // googleAnalytics: {
+  //   // Uncomment the debug object to enable debugging
+  //   // debug: {
+  //   //   enabled: true,
+  //   //   sendHitTask: false
+  //   // },
+  //   id: process.env.GOOGLE_ANALYTICS_ID,
+  //   disabled: () => {
+  //     const consent = JSON.parse(localStorage.getItem('OB_cookie_consent'))
+  //     return consent ? !consent.statistics : true
+  //   }
+  // }
 }
