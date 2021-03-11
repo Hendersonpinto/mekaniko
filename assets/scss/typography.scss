@@ -45,7 +45,8 @@ h1 {
 
 h2 {
   font-weight: normal;
-  font-size: 3rem;
+  font-size: 2.4rem;
+  line-height: 130%;
 
   @include screenSizes(phone) {
     font-size: 1.8rem;
@@ -94,4 +95,33 @@ a {
 .layout-enter,
 .layout-leave-active {
   opacity: 0;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  svg {
+    margin-right: 8px;
+  }
+
+  p {
+    font-size: 28px;
+  }
+
+  &.small {
+    svg {
+      margin-right: 4px;
+      width: 20px;
+    }
+
+    p {
+      font-size: 18px;
+    }
+  }
+}
+
+.green {
+  color: $green;
 }
