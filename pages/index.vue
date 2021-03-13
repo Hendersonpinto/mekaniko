@@ -5,11 +5,7 @@
         <h1>
           Descubre los <span class="green">mejores</span> talleres mecánicos
         </h1>
-        <svg width="152" height="9" viewBox="0 0 152 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 4.70679C37.2205 3.02139 117.929 -0.012315 151 1.336" stroke="#BC4724" stroke-width="2" />
-          <path d="M10.2698 7.51569C43.9098 6.3921 118.141 4.31345 145.944 4.9876" stroke="#BC4724" stroke-width="2" />
-        </svg>
-
+        <Scribble />
         <h3>Compara precios. Escoge un taller. Decide la hora. Paga online</h3>
       </div>
       <div class="buttons">
@@ -26,154 +22,59 @@
         </nuxt-link>
       </div>
     </div>
-    <img src="~/assets/images/mechanic.png" class="mechanic">
-    <img src="~/assets/images/mechanic2.png" class="mechanic2">
-    <img src="~/assets/images/girl-on-car.png" class="girl">
+    <img v-if="$mq === 'desktop'" src="~/assets/images/mechanic.png" class="mechanic">
+    <img v-if="$mq === 'desktop'" src="~/assets/images/mechanic2.png" class="mechanic2">
+    <img v-if="$mq === 'desktop'" src="~/assets/images/girl-on-car.png" class="girl">
     <img src="~/assets/images/grid.png" class="gridd">
-    <svg
-      class="blob1"
-      width="685"
-      height="612"
-      viewBox="0 0 685 612"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M322.718 42.2962C389.993 43.5993 456.244 -9.39533 518.039 17.2328C583.178 45.3022 619.251 115.278 645.239 181.275C672.558 250.652 703.648 332.751 668.087 398.286C632.836 463.25 538.146 457.31 474.795 495.385C419.745 528.471 385.715 593.346 322.718 605.857C253.262 619.651 178.025 605.625 119.355 565.974C59.6314 525.612 17.6419 460.512 3.1651 389.898C-10.4709 323.385 23.1414 260.117 43.3622 195.301C63.881 129.53 61.3938 42.6545 121.821 9.55815C182.822 -23.8522 253.18 40.9493 322.718 42.2962Z" fill="#17DEC2" fill-opacity="0.05" />
-    </svg>
-    <svg
-      class="blob2"
-      width="578"
-      height="564"
-      viewBox="0 0 578 564"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path fill-rule="evenodd" clip-rule="evenodd" d="M296.26 14.13C355.609 16.3012 424.63 -12.6007 469.651 26.1301C514.763 64.9384 489.238 139.511 507.748 196.067C526.323 252.82 579.814 296.547 577.687 356.225C575.248 424.67 551.955 500.237 495.526 539.05C439.345 577.692 363.526 560.963 296.26 549.797C238.538 540.215 180.923 521.721 139.887 480.012C102.362 441.872 105.649 382.653 83.771 333.825C57.9179 276.125 -5.44087 231.604 0.375074 168.645C6.41843 103.224 55.1622 43.5089 113.399 13.097C168.785 -15.8264 233.818 11.8457 296.26 14.13Z" fill="#0CA791" fill-opacity="0.12" />
-    </svg>
-
-    <svg
-      class="arrow-small"
-      width="206"
-      height="159"
-      viewBox="0 0 206 159"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M1.77088 157.817C1.87666 158.359 2.40185 158.712 2.9439 158.607L11.7773 156.883C12.3193 156.777 12.673 156.252 12.5672 155.71C12.4614 155.168 11.9362 154.814 11.3942 154.92L3.5423 156.452L2.00995 148.6C1.90416 148.058 1.37898 147.705 0.836922 147.81C0.294863 147.916 -0.0588053 148.441 0.0469821 148.983L1.77088 157.817ZM68.9969 112.774L68.0657 113.138L68.075 113.162L68.0855 113.185L68.9969 112.774ZM135.241 67.922L136.183 68.2599L136.186 68.2509L136.189 68.242L135.241 67.922ZM201.182 24.0231C201.708 24.1911 202.27 23.9009 202.439 23.3749L205.178 14.8018C205.346 14.2757 205.056 13.713 204.529 13.5449C204.003 13.3768 203.441 13.667 203.273 14.1931L200.838 21.8136L193.217 19.3788C192.691 19.2107 192.128 19.5009 191.96 20.027C191.792 20.5531 192.082 21.1158 192.609 21.2839L201.182 24.0231ZM3.58182 158.184C21.2465 131.952 35.5065 115.25 46.3707 107.894C51.8084 104.212 56.1967 103.008 59.6483 103.857C63.0578 104.697 65.9112 107.636 68.0657 113.138L69.9281 112.409C67.6654 106.631 64.4459 102.979 60.1264 101.915C55.8491 100.862 50.8525 102.444 45.2495 106.238C34.0322 113.833 19.5871 130.836 1.9229 157.067L3.58182 158.184ZM68.0855 113.185C72.7633 123.542 77.7347 130.563 83.073 134.011C85.7658 135.75 88.5657 136.589 91.453 136.466C94.3325 136.344 97.2151 135.269 100.09 133.323C105.809 129.45 111.639 122.031 117.613 111.229C123.601 100.402 129.789 86.0731 136.183 68.2599L134.3 67.5842C127.926 85.3441 121.779 99.5636 115.863 110.261C109.933 120.983 104.29 128.064 98.9686 131.666C96.323 133.458 93.7932 134.365 91.3681 134.468C88.9509 134.57 86.5541 133.878 84.1582 132.331C79.319 129.205 74.5446 122.627 69.9083 112.362L68.0855 113.185ZM136.189 68.242C142.073 50.8154 147.853 36.8474 153.524 26.3192C159.207 15.7677 164.727 8.77296 170.045 5.17213C172.69 3.38169 175.255 2.44984 177.752 2.30804C180.243 2.16653 182.74 2.80716 185.261 4.28232C190.344 7.25727 195.476 13.5991 200.597 23.5289L202.375 22.6122C197.202 12.5824 191.854 5.82335 186.271 2.55615C183.458 0.91025 180.574 0.144475 177.638 0.31125C174.708 0.477721 171.8 1.56883 168.924 3.51602C163.202 7.39045 157.494 14.7297 151.763 25.3708C146.019 36.0353 140.198 50.1187 134.294 67.6021L136.189 68.242Z" fill="#4C75F2" />
-    </svg>
-    <svg
-      class="arrow-big"
-      width="1075"
-      height="224"
-      viewBox="0 0 1075 224"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M0.842668 216.454C0.477092 216.04 0.516325 215.408 0.930298 215.042L7.67636 209.085C8.09034 208.719 8.72229 208.759 9.08786 209.173C9.45344 209.587 9.4142 210.219 9.00023 210.584L3.00373 215.88L8.29919 221.876C8.66477 222.29 8.62553 222.922 8.21156 223.288C7.79759 223.653 7.16564 223.614 6.80006 223.2L0.842668 216.454ZM359.26 144.482L358.396 144.986L358.377 144.954L358.361 144.92L359.26 144.482ZM716.927 73.1725L717.175 72.2038L717.183 72.2057L717.191 72.2078L716.927 73.1725ZM1073.68 1.46542C1073.9 0.95859 1074.49 0.725615 1074.99 0.945053L1083.25 4.5209C1083.76 4.74031 1083.99 5.32907 1083.77 5.83588C1083.55 6.34271 1082.96 6.57568 1082.46 6.35625L1075.12 3.17774L1071.94 10.5192C1071.72 11.026 1071.13 11.259 1070.62 11.0396C1070.11 10.8201 1069.88 10.2314 1070.1 9.72456L1073.68 1.46542ZM1.65419 214.794C139.716 223.365 238.441 221.699 297.914 209.841C327.688 203.905 347.408 195.453 357.37 184.646C362.321 179.275 364.853 173.332 365.038 166.792C365.224 160.229 363.047 152.968 358.396 144.986L360.124 143.979C364.895 152.167 367.237 159.798 367.037 166.849C366.837 173.923 364.082 180.315 358.841 186.001C348.419 197.307 328.142 205.854 298.305 211.803C238.555 223.715 139.602 225.362 1.53027 216.79L1.65419 214.794ZM358.361 144.92C343.188 113.802 339.136 88.7065 346.63 69.8153C354.146 50.8658 373.122 38.5241 403.075 32.5523C433.036 26.5788 474.201 26.9253 526.518 33.537C578.85 40.1506 642.405 53.0421 717.175 72.2038L716.679 74.1412C641.956 54.9916 578.488 42.1208 526.268 35.5212C474.032 28.9198 433.116 28.6022 403.466 34.5137C373.807 40.4268 355.642 52.5191 348.489 70.5527C341.312 88.6446 345.061 113.081 360.159 144.044L358.361 144.92ZM717.191 72.2078C789.268 91.8836 850.751 105.148 901.647 112.011C952.557 118.875 992.81 119.323 1022.46 113.412C1052.11 107.502 1070.97 95.2737 1079.44 76.9278C1087.93 58.541 1086.12 33.7009 1073.66 2.23068L1075.52 1.49478C1088.06 33.1599 1090.08 58.6426 1081.26 77.7659C1072.41 96.9301 1052.81 109.4 1022.85 115.374C992.885 121.348 952.379 120.869 901.38 113.993C850.367 107.115 788.792 93.8268 716.664 74.1372L717.191 72.2078Z" fill="#FBF8F0" />
-    </svg>
-    <svg
-      class="triangle1"
-      width="18"
-      height="15"
-      viewBox="0 0 18 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M9 0L17.6603 15H0.339746L9 0Z" fill="#E0E9F6" />
-    </svg>
-    <svg
-      class="triangle2"
-      width="18"
-      height="15"
-      viewBox="0 0 18 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M9 0L17.6603 15H0.339746L9 0Z" fill="#E0E9F6" />
-    </svg>
-    <svg
-      class="triangle3"
-      width="18"
-      height="15"
-      viewBox="0 0 18 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M9 0L17.6603 15H0.339746L9 0Z" fill="#E0E9F6" />
-    </svg>
-    <svg
-      class="triangle4"
-      width="18"
-      height="15"
-      viewBox="0 0 18 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path d="M9 0L17.6603 15H0.339746L9 0Z" fill="#E0E9F6" />
-    </svg>
-    <svg
-      class="diamond1"
-      width="23"
-      height="23"
-      viewBox="0 0 23 23"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect y="11.3137" width="16" height="16" transform="rotate(-45 0 11.3137)" fill="#FBF8F0" />
-    </svg>
-    <svg
-      class="diamond2"
-      width="23"
-      height="23"
-      viewBox="0 0 23 23"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect y="11.3137" width="16" height="16" transform="rotate(-45 0 11.3137)" fill="#FBF8F0" />
-    </svg>
-    <svg
-      class="cross1"
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line
-        x1="8"
-        y1="0.000244141"
-        x2="8"
-        y2="16.0002"
-        stroke="#F4E9D5"
-        stroke-width="2"
-      />
-      <line y1="8.00024" x2="16" y2="8.00024" stroke="#F4E9D5" stroke-width="2" />
-    </svg>
-    <svg
-      class="cross2"
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <line
-        x1="8"
-        y1="0.000244141"
-        x2="8"
-        y2="16.0002"
-        stroke="#F4E9D5"
-        stroke-width="2"
-      />
-      <line y1="8.00024" x2="16" y2="8.00024" stroke="#F4E9D5" stroke-width="2" />
-    </svg>
+    <BlobOne class="blob1" />
+    <BlobTwo class="blob2" />
+    <ArrowSmall class="arrow-small" />
+    <ArrowBig class="arrow-big" />
+    <TriangleSvg class="triangle1" />
+    <TriangleSvg class="triangle2" />
+    <TriangleSvg class="triangle3" />
+    <TriangleSvg class="triangle4" />
+    <DiamondSvg class="diamond1" />
+    <DiamondSvg class="diamond2" />
+    <CrossSvg class="cross1" />
+    <CrossSvg class="cross2" />
+    <p class="copyright">
+      Copyright © 2021 mekaniko
+    </p>
   </main>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 
-export default Vue.extend({})
+import Scribble from '~/assets/svgs/scribble.svg?inline'
+import BlobOne from '~/assets/svgs/blob1.svg?inline'
+import BlobTwo from '~/assets/svgs/blob2.svg?inline'
+import ArrowSmall from '~/assets/svgs/arrow-small.svg?inline'
+import ArrowBig from '~/assets/svgs/arrow-big.svg?inline'
+import TriangleSvg from '~/assets/svgs/triangle.svg?inline'
+import DiamondSvg from '~/assets/svgs/diamond.svg?inline'
+import CrossSvg from '~/assets/svgs/cross.svg?inline'
+
+export default Vue.extend({
+  components: {
+    Scribble,
+    ArrowSmall,
+    ArrowBig,
+    TriangleSvg,
+    DiamondSvg,
+    CrossSvg,
+    BlobOne,
+    BlobTwo
+  },
+  head () {
+    return {
+      bodyAttrs: {
+        class: 'over-hidden'
+      }
+    }
+  }
+})
 </script>
 
 <style scoped lang="scss">
@@ -227,11 +128,12 @@ main {
         font-weight: bold;
         letter-spacing: 0.7px;
         color: white;
+        border: none;
 
         &.white {
           color: #2d2d2d;
           border: 2px solid #2d2d2d;
-          background: none;
+          background: white;
         }
       }
 
@@ -272,6 +174,7 @@ main {
       width: 55px;
       top: 9%;
       right: 47%;
+      z-index: -1;
     }
   }
 
@@ -287,7 +190,8 @@ main {
     &.blob2 {
       right: -10%;
       top: 15%;
-      z-index: -2
+      z-index: -2;
+      filter: blur(10px);
     }
 
     &.arrow-small {
@@ -339,6 +243,90 @@ main {
     &.cross2 {
       top: 17%;
       left: 10%;
+    }
+  }
+
+  .copyright {
+    font-size: 10px;
+    color: $blackTer;
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  @include screenSizes(phone) {
+    .left {
+      width: 100vw;
+      margin: 0;
+      align-items: initial;
+
+      .text {
+        width: 260px;
+        margin-left: 24px;
+        margin-bottom: 80px;
+
+        h1 {
+          margin-bottom: 24px;
+        }
+
+        h3 {
+          white-space: normal;
+          line-height: 100%;
+        }
+
+        svg {
+          position: absolute;
+          top: 75px;
+          right: 0;
+          left: -8px;
+          width: 50%;
+        }
+      }
+    }
+
+    .buttons {
+      margin: 0 auto;
+    }
+
+    img.gridd {
+      width: 55px;
+      top: 77%;
+      right: 4%;
+    }
+
+    svg {
+      &.blob1 {
+        display: none;
+      }
+
+      &.blob2 {
+        right: -58%;
+        top: 48%;
+      }
+
+      &.arrow-small {
+        display: none;
+      }
+
+      &.arrow-big {
+        top: 63%;
+        right: 6%;
+        z-index: -2;
+      }
+
+      &.triangle1 {
+        bottom: 8%;
+      }
+
+      &.diamond1 {
+        top: 52%;
+        left: 50%;
+      }
+
+      &.cross2 {
+        top: 12%;
+      }
     }
   }
 }

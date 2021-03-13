@@ -41,8 +41,8 @@ export default {
     // https://go.nuxtjs.dev/stylelint
     '@nuxtjs/stylelint-module',
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/style-resources'
-
+    '@nuxtjs/style-resources',
+    '@nuxtjs/svg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -50,7 +50,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    'nuxt-mq'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -78,6 +79,16 @@ export default {
       './assets/scss/colors.scss',
       './assets/scss/breakpoints.scss'
     ]
+  },
+
+  mq: {
+    defaultBreakpoint: 'desktop',
+    breakpoints: {
+      phoneSmall: 360,
+      phone: 490,
+      tablet: 780,
+      desktop: Infinity
+    }
   }
 
   // googleAnalytics: {

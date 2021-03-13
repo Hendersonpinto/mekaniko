@@ -23,11 +23,16 @@ html {
   text-align: left;
   background-color: white;
   transition: background-color 500ms ease-in-out;
-  overflow: hidden;
 
   &.dark-mode {
     color: white;
     background-color: black;
+  }
+}
+
+body {
+  &.over-hidden {
+    overflow: hidden
   }
 }
 
@@ -67,9 +72,27 @@ p {
 button {
   font-family: 'Circular', sans-serif;
   appearance: none;
-  background: none;
   padding: 0;
-  border: none;
+  transition: all 300ms ease-in-out;
+  border: 1px solid $orange;
+  background: $orange;
+  color: white;
+
+  &:hover {
+    color: black;
+    background: none;
+  }
+
+  &.green {
+    color: white;
+    background: $green;
+    border: 1px solid $green;
+
+    &:hover {
+      color: black;
+      background: none;
+    }
+  }
 }
 
 a {
