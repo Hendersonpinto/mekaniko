@@ -17,7 +17,7 @@
       method="post"
     >
       <!-- This field is needed in order for the form to work -->
-      <input type="hidden" :name="formName" :value="formName">
+      <input type="hidden" name="form-name" :value="formName">
       <!-- This field works as our honeypot -->
       <p class="hidden-field">
         <label>Don’t fill this out: <input name="bot-field"></label>
