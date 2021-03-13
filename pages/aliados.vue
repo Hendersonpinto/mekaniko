@@ -5,13 +5,13 @@
     <CircleSvg class="circle" />
     <div class="left">
       <h1>
-        Llega a mas clientes y aumenta los ingresos de tu <span class="green">negocio.</span>
+        Llega a más clientes y aumenta los ingresos de tu <span class="green">negocio.</span>
       </h1>
     </div>
     <div class="right">
       <Form
         form-name="aliados"
-        description="Interesado en registrar tu taller en <span class='green'>Mekaniko</span>? Envianos tus datos y seras contactado por nuestro equipo."
+        description="Estas interesado en registrar tu taller en <span class='green'>Mekaniko</span>? Envíanos tus datos y serás contactado por nuestro equipo."
         button-label="Registrar mi taller!"
         :fields="fields"
         :footer="footer"
@@ -53,13 +53,13 @@ export default Vue.extend({
         {
           name: 'email',
           type: 'text',
-          label: 'Correo Electronico'
+          label: 'Correo Electrónico'
         }
       ],
       footer: {
         text: 'Necesitas reparar tu auto?',
         url: '/unete',
-        linkText: 'Obten 10% de descuento'
+        linkText: 'Obtén 10% de descuento'
       }
     }
   }

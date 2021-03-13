@@ -23,6 +23,7 @@
         <label>Don’t fill this out: <input name="bot-field"></label>
       </p>
       <div v-for="(field, fieldIndex) in fields" :key="fieldIndex" class="field-group" :class="{ 'form-error': $v.form.fields[field.name].$error }">
+        <!-- For email type we render different errors -->
         <template v-if="field.name === 'email'">
           <div class="label-wrapper">
             <label :key="field.label" class="form-label" :for="field.name">
@@ -41,6 +42,8 @@
             @blur="$v.form.fields[field.name].$touch()"
           >
         </template>
+        <!-- For phone type we render different errors -->
+        <!-- We are using model to dynamic created keys on the data.form.fields -->
         <template v-else-if="field.name === 'phone'">
           <div class="label-wrapper">
             <label :key="field.label" class="form-label" :for="field.name">
@@ -67,6 +70,7 @@
             <span v-show="!$v.form.fields[field.name].required" class="error">Campo requerido</span>
             <span v-show="!$v.form.fields[field.name].minLength" class="error">Minimo {{ $v.form.fields[field.name].$params.minLength ? $v.form.fields[field.name].$params.minLength.min : '' }} caracteres</span>
           </div>
+          <!-- .lazy is used to trigger a model update on blur -->
           <input
             :id="field.name"
             :key="field.name"
@@ -93,6 +97,7 @@
 import Vue, { PropOptions } from 'vue'
 import { required, minLength, email } from 'vuelidate/lib/validators'
 
+// custom validation function
 import validatePhone from '~/utils/validatePhone'
 import { Field } from '~/types/Field'
 import { Footer } from '~/types/Footer'
