@@ -4,14 +4,14 @@
     <CircleSvg class="circle" />
     <div class="left">
       <h1>
-        Descubre, compara y reserva tu proxima visita al <span class="green">mekaniko.</span>
+        Descubre, compara y reserva tu próxima visita al <span class="green">mekaniko.</span>
       </h1>
     </div>
     <div class="right">
       <div class="right">
         <Form
           form-name="user"
-          description="Apuntate nuestra lista de invitados especiales y obten <span class='green'>10% de descuento</span> en tu primer servicio mecanico!"
+          description="Apúntate en nuestra lista de invitados especiales y obtén <span class='green'>10% de descuento</span> en tu primer servicio mecánico!"
           button-label="Si, quiero mi descuento!"
           :fields="fields"
           :footer="footer"
@@ -49,13 +49,13 @@ export default Vue.extend({
         {
           name: 'email',
           type: 'text',
-          label: 'Correo Electronico'
+          label: 'Correo Electrónico'
         }
       ],
       footer: {
         text: 'Eres dueño de un taller?',
         url: '/aliados',
-        linkText: 'Registralo en nuestra lista de aliados'
+        linkText: 'Regístralo en nuestra lista de aliados'
       }
     }
   }

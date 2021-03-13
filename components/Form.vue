@@ -16,18 +16,72 @@
       netlify-honeypot="bot-field"
       method="post"
     >
-      <!-- This field is needed in order for the form to work -->
+      <!-- This field is needed in order for the form to work. The name attribute has to be "form-name" -->
       <input type="hidden" name="form-name" :value="formName">
       <!-- This field works as our honeypot -->
       <p class="hidden-field">
         <label>Don’t fill this out: <input name="bot-field"></label>
       </p>
-      <template v-for="field in fields">
-        <label :key="field.label" class="form-label" :for="field.name">
-          {{ field.label }}
-        </label>
-        <input :id="field.name" :key="field.name" :type="field.type" class="form-field" :name="field.name">
-      </template>
+      <div v-for="(field, fieldIndex) in fields" :key="fieldIndex" class="field-group" :class="{ 'form-error': $v.form.fields[field.name].$error }">
+        <!-- For email type we render different errors -->
+        <template v-if="field.name === 'email'">
+          <div class="label-wrapper">
+            <label :key="field.label" class="form-label" :for="field.name">
+              {{ field.label }}
+            </label>
+            <span v-show="!$v.form.fields[field.name].required" class="error">Campo requerido</span>
+            <span v-show="!$v.form.fields[field.name].email" class="error">Formato de correo invalido</span>
+          </div>
+          <input
+            :id="field.name"
+            :key="field.name"
+            v-model.trim.lazy="form.fields[field.name]"
+            :type="field.type"
+            class="form-field"
+            :name="field.name"
+            @blur="$v.form.fields[field.name].$touch()"
+          >
+        </template>
+        <!-- For phone type we render different errors -->
+        <!-- We are using model to dynamic created keys on the data.form.fields -->
+        <template v-else-if="field.name === 'phone'">
+          <div class="label-wrapper">
+            <label :key="field.label" class="form-label" :for="field.name">
+              {{ field.label }}
+            </label>
+            <span v-show="!$v.form.fields[field.name].required" class="error">Campo requerido</span>
+            <span v-show="!$v.form.fields[field.name].validatePhone" class="error">Formato de telefono invalido</span>
+          </div>
+          <input
+            :id="field.name"
+            :key="field.name"
+            v-model.trim.lazy="form.fields[field.name]"
+            :type="field.type"
+            class="form-field"
+            :name="field.name"
+            @blur="$v.form.fields[field.name].$touch()"
+          >
+        </template>
+        <template v-else>
+          <div class="label-wrapper">
+            <label :key="field.label" class="form-label" :for="field.name">
+              {{ field.label }}
+            </label>
+            <span v-show="!$v.form.fields[field.name].required" class="error">Campo requerido</span>
+            <span v-show="!$v.form.fields[field.name].minLength" class="error">Minimo {{ $v.form.fields[field.name].$params.minLength ? $v.form.fields[field.name].$params.minLength.min : '' }} caracteres</span>
+          </div>
+          <!-- .lazy is used to trigger a model update on blur -->
+          <input
+            :id="field.name"
+            :key="field.name"
+            v-model.trim.lazy="form.fields[field.name]"
+            :type="field.type"
+            class="form-field"
+            :name="field.name"
+            @blur="$v.form.fields[field.name].$touch()"
+          >
+        </template>
+      </div>
       <button class="form-button" :class="{green}" type="submit" :form="formName" value="Submit">
         {{ buttonLabel }}
       </button>
@@ -41,7 +95,10 @@
 </template>
 <script lang="ts">
 import Vue, { PropOptions } from 'vue'
+import { required, minLength, email } from 'vuelidate/lib/validators'
 
+// custom validation function
+import validatePhone from '~/utils/validatePhone'
 import { Field } from '~/types/Field'
 import { Footer } from '~/types/Footer'
 import Logo from '~/assets/svgs/logo.svg?inline'
@@ -83,6 +140,41 @@ export default Vue.extend({
         return {}
       }
     } as PropOptions<Footer>
+  },
+  data () {
+    return {
+      form: {
+        fields: {}
+      }
+    }
+  },
+  validations: {
+    form: {
+      fields: {
+        name: {
+          required,
+          minLength: minLength(3)
+        },
+        city: {
+          required,
+          minLength: minLength(0)
+        },
+        business: {
+          required,
+          minLength: minLength(0)
+        },
+        phone: {
+          required,
+          validatePhone,
+          minLength: minLength(0)
+        },
+        email: {
+          required,
+          email,
+          minLength: minLength(0)
+        }
+      }
+    }
   }
 })
 </script>
@@ -115,24 +207,55 @@ export default Vue.extend({
       display: none;
     }
 
-    label {
-      font-size: 12px;
-    }
+    .field-group {
+      display: flex;
+      flex-direction: column;
 
-    input {
-      height: 36px;
-      border-radius: 10px;
-      background: $field;
-      padding: 0 16px;
-      font-size: 14px;
-      margin-bottom: 8px;
-      margin-top: 4px;
-      border: 1px solid transparent;
-      transition: all 300ms ease-in-out;
+      .label-wrapper {
+        display: flex;
+        justify-content: space-between;
 
-      &:hover {
-        border: 1px solid rgb(109, 109, 109);
-        background: white;
+        label {
+          font-size: 12px;
+        }
+
+        span {
+          color: red;
+          display: none;
+        }
+      }
+
+      input {
+        height: 36px;
+        border-radius: 10px;
+        background: $field;
+        padding: 0 16px;
+        font-size: 14px;
+        margin-bottom: 8px;
+        margin-top: 4px;
+        border: 1px solid transparent;
+        transition: all 300ms ease-in-out;
+
+        &:hover {
+          border: 1px solid rgb(109, 109, 109);
+          background: white;
+        }
+      }
+
+      &.form-error {
+        .label-wrapper {
+          label {
+            color: red;
+          }
+
+          span {
+            display: initial;
+          }
+        }
+
+        input {
+          border: 1px solid red;
+        }
       }
     }
   }
