@@ -89,6 +89,7 @@ main {
     align-items: center;
     justify-content: center;
     margin-left: 60px;
+    z-index: 10;
 
     .text {
       width: 520px;
@@ -185,6 +186,7 @@ main {
       top: 9%;
       right: 6%;
       z-index: -2;
+      filter: blur(4px);
     }
 
     &.blob2 {
@@ -289,10 +291,24 @@ main {
       margin: 0 auto;
     }
 
-    img.gridd {
-      width: 55px;
-      top: 77%;
-      right: 4%;
+    img {
+      &.mechanic {
+        display: none;
+      }
+
+      &.mechanic2 {
+        display: none;
+      }
+
+      &.girl {
+        display: none;
+      }
+
+      &.gridd {
+        width: 55px;
+        top: 77%;
+        right: 4%;
+      }
     }
 
     svg {
@@ -301,8 +317,7 @@ main {
       }
 
       &.blob2 {
-        right: -58%;
-        top: 48%;
+        display: none;
       }
 
       &.arrow-small {

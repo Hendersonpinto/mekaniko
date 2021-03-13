@@ -8,7 +8,17 @@
     <p class="description" v-html="description" />
     <!-- Apuntate nuestra lista de invitados especiales y obten <span class="green">10% de descuento</span> en tu primer servicio mecanico! -->
 
-    <form :id="formName" :name="formName" action="" method="post">
+    <form
+      :id="formName"
+      :name="formName"
+      action=""
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      method="post"
+    >
+      <p class="hidden-field">
+        <label>Don’t fill this out: <input name="bot-field"></label>
+      </p>
       <template v-for="field in fields">
         <label :key="field.label" class="form-label" :for="field.name">
           {{ field.label }}
@@ -97,6 +107,10 @@ export default Vue.extend({
     margin: auto;
     margin-top: 40px;
     margin-bottom: 16px;
+
+    .hidden-field {
+      display: none;
+    }
 
     label {
       font-size: 12px;

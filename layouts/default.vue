@@ -40,7 +40,7 @@ nav {
   align-items: center;
   position: absolute;
   width: 100%;
-  z-index: 10;
+  z-index: 20;
 
   .iniciar {
     height: fit-content;
