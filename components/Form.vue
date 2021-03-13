@@ -313,7 +313,7 @@ export default Vue.extend({
       margin-top: 24px;
       width: 90%;
       margin-bottom: 4px;
-      height: 230px;
+      height: auto;
 
       label {
         font-size: 1rem;
@@ -327,6 +327,7 @@ export default Vue.extend({
         width: 200px;
         height: 36px;
         font-size: 1.4rem;
+        margin: 16px auto;
       }
     }
 

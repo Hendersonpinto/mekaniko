@@ -148,5 +148,15 @@ main {
       margin-bottom: 48px;
     }
   }
+
+  @include screenSizes(desktopExtraLarge) {
+    .left {
+      width: 720px;
+
+      h1 {
+        margin-top: 15vh;
+      }
+    }
+  }
 }
 </style>

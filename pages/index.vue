@@ -166,7 +166,7 @@ main {
     }
 
     &.girl {
-      width: 300px;
+      width: 270px;
       top: 35%;
       right: 20%;
     }
@@ -341,6 +341,46 @@ main {
 
       &.cross2 {
         top: 12%;
+      }
+    }
+  }
+
+  @include screenSizes(desktopExtraLarge) {
+    width: 90vw;
+    margin: auto;
+
+    .left {
+      /* sd */
+      .text {
+        svg {
+          top: 177px;
+          width: 280px;
+          height: auto;
+          right: 255px;
+        }
+      }
+
+      .buttons {
+        width: 400px;
+
+        button {
+          height: 70px;
+          font-size: 2.4rem;
+        }
+      }
+    }
+
+    img {
+      &.mechanic {
+        width: 270px;
+      }
+
+      &.mechanic2 {
+        width: 600px;
+      }
+
+      &.girl {
+        width: 400px;
       }
     }
   }
