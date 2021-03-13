@@ -46,9 +46,9 @@ export default Vue.extend({
           label: 'Nombre del taller'
         },
         {
-          name: 'city',
+          name: 'phone',
           type: 'text',
-          label: 'Ciudad'
+          label: 'Nº Telefono'
         },
         {
           name: 'email',
