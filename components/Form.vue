@@ -185,10 +185,14 @@ export default Vue.extend({
         const payload = this.forms[this.formName].fields
         this.$axios.post(
 <<<<<<< HEAD
+<<<<<<< HEAD
           'https://mekaniko.cl/',
 =======
           '/',
 >>>>>>> parent of a70c01d (Using fetch API)
+=======
+          '/',
+>>>>>>> parent of c36180e (Merge pull request #4 from Hendersonpinto/ajax-form-submission)
           this.encode({
             'form-name': this.formName,
             ...payload
