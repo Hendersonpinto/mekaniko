@@ -12,16 +12,12 @@
       :id="formName"
       :name="formName"
       netlify
-      data-netlify-honeypot="bot-field"
       method="post"
       @submit.prevent="submitForm"
     >
       <!-- This field is needed in order for the form to work. The name attribute has to be "form-name" -->
       <input type="hidden" name="form-name" :value="formName">
       <!-- This field works as our honeypot -->
-      <p class="hidden-field">
-        <label>Don’t fill this out: <input name="bot-field"></label>
-      </p>
       <div v-for="(field, fieldIndex) in fields" :key="fieldIndex" class="field-group" :class="{ 'form-error': $v.forms[formName].fields[field.name].$error }">
         <!-- For email type we render different errors -->
         <template v-if="field.name === 'email'">
@@ -182,8 +178,7 @@ export default Vue.extend({
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: this.encode({
             'form-name': this.formName,
-            ...payload,
-            'netlify-honeypot': 'bot-field'
+            ...payload
           })
         }).then(() => this.$router.push('/')).catch(error => alert(error))
       }
