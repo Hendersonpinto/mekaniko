@@ -186,7 +186,7 @@ export default Vue.extend({
             'form-name': this.formName,
             ...payload
           })
-        }).then(() => this.$router.push('/')).catch(error => alert(error))
+        }).then(() => console.log('successful!')).catch(error => alert(error))
       }
     }
   },
