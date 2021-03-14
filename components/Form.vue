@@ -184,7 +184,7 @@ export default Vue.extend({
         }
         const payload = this.forms[this.formName].fields
         this.$axios.post(
-          '/',
+          'https://mekaniko.cl/',
           this.encode({
             'form-name': this.formName,
             ...payload
