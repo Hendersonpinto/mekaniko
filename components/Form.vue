@@ -186,6 +186,7 @@ export default Vue.extend({
         this.$axios.post(
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
           'https://mekaniko.cl/',
 =======
           '/',
@@ -193,6 +194,9 @@ export default Vue.extend({
 =======
           '/',
 >>>>>>> parent of c36180e (Merge pull request #4 from Hendersonpinto/ajax-form-submission)
+=======
+          '/',
+>>>>>>> parent of f7c480c (added server origin to post request)
           this.encode({
             'form-name': this.formName,
             ...payload
