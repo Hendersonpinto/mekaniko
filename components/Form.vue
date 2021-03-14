@@ -15,7 +15,6 @@
       data-netlify="true"
       netlify-honeypot="bot-field"
       method="post"
-      @submit.prevent="submitForm"
     >
       <!-- This field is needed in order for the form to work. The name attribute has to be "form-name" -->
       <input type="hidden" name="form-name" :value="formName">
@@ -84,6 +83,7 @@
         </template>
       </div>
       <button
+        :disabled="disabledForm"
         class="form-button"
         :class="{green}"
         type="submit"
@@ -92,7 +92,6 @@
       >
         {{ buttonLabel }}
       </button>
-      <span v-if="submitted && disabledForm" class="error">Todos los campos deben estar llenos!</span>
     </form>
     <p class="footer">
       {{ footer.text }} <nuxt-link :to="footer.url">
@@ -158,8 +157,7 @@ export default Vue.extend({
         user: {
           fields: {}
         }
-      },
-      submitted: false
+      }
     }
   },
   computed: {
@@ -167,6 +165,7 @@ export default Vue.extend({
       return this.$v.forms[this.formName].$invalid
     }
   },
+<<<<<<< HEAD
   methods: {
     encode (data:any):string {
       return Object.keys(data)
@@ -206,6 +205,8 @@ export default Vue.extend({
       }
     }
   },
+=======
+>>>>>>> parent of 463449b (Merge pull request #3 from Hendersonpinto/ajax-form-submission)
   // I need to specify the names of the expected forms. They should be separated.
   validations: {
     forms: {
@@ -277,7 +278,6 @@ export default Vue.extend({
     margin: auto;
     margin-top: 40px;
     margin-bottom: 16px;
-    position: relative;
 
     .hidden-field {
       display: none;
@@ -333,15 +333,6 @@ export default Vue.extend({
           border: 1px solid red;
         }
       }
-    }
-
-    span.error {
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translate(-50%, 15px);
-      color: red;
-      text-align: center;
     }
   }
 
