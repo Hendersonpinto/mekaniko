@@ -179,18 +179,15 @@ export default Vue.extend({
       if (this.disabledForm) {
         this.submitted = true
       } else {
-        const axiosConfig = {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }
         const payload = this.forms[this.formName].fields
-        this.$axios.post(
-          '/',
-          this.encode({
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: this.encode({
             'form-name': this.formName,
             ...payload
-          }),
-          axiosConfig
-        )
+          })
+        }).then(() => console.log('successful!')).catch(error => alert(error))
       }
     }
   },
