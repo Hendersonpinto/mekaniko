@@ -22,24 +22,24 @@
       <p class="hidden-field">
         <label>Don’t fill this out: <input name="bot-field"></label>
       </p>
-      <div v-for="(field, fieldIndex) in fields" :key="fieldIndex" class="field-group" :class="{ 'form-error': $v.form.fields[field.name].$error }">
+      <div v-for="(field, fieldIndex) in fields" :key="fieldIndex" class="field-group" :class="{ 'form-error': $v.forms[formName].fields[field.name].$error }">
         <!-- For email type we render different errors -->
         <template v-if="field.name === 'email'">
           <div class="label-wrapper">
             <label :key="field.label" class="form-label" :for="field.name">
               {{ field.label }}
             </label>
-            <span v-show="!$v.form.fields[field.name].required" class="error">Campo requerido</span>
-            <span v-show="!$v.form.fields[field.name].email" class="error">Formato de correo invalido</span>
+            <span v-show="!$v.forms[formName].fields[field.name].required" class="error">Campo requerido</span>
+            <span v-show="!$v.forms[formName].fields[field.name].email" class="error">Formato de correo invalido</span>
           </div>
           <input
             :id="field.name"
             :key="field.name"
-            v-model.trim.lazy="form.fields[field.name]"
+            v-model.trim.lazy="forms[formName].fields[field.name]"
             :type="field.type"
             class="form-field"
             :name="field.name"
-            @blur="$v.form.fields[field.name].$touch()"
+            @blur="$v.forms[formName].fields[field.name].$touch()"
           >
         </template>
         <!-- For phone type we render different errors -->
@@ -49,17 +49,17 @@
             <label :key="field.label" class="form-label" :for="field.name">
               {{ field.label }}
             </label>
-            <span v-show="!$v.form.fields[field.name].required" class="error">Campo requerido</span>
-            <span v-show="!$v.form.fields[field.name].validatePhone" class="error">Formato de telefono invalido</span>
+            <span v-show="!$v.forms[formName].fields[field.name].required" class="error">Campo requerido</span>
+            <span v-show="!$v.forms[formName].fields[field.name].validatePhone" class="error">Formato de telefono invalido</span>
           </div>
           <input
             :id="field.name"
             :key="field.name"
-            v-model.trim.lazy="form.fields[field.name]"
+            v-model.trim.lazy="forms[formName].fields[field.name]"
             :type="field.type"
             class="form-field"
             :name="field.name"
-            @blur="$v.form.fields[field.name].$touch()"
+            @blur="$v.forms[formName].fields[field.name].$touch()"
           >
         </template>
         <template v-else>
@@ -67,22 +67,29 @@
             <label :key="field.label" class="form-label" :for="field.name">
               {{ field.label }}
             </label>
-            <span v-show="!$v.form.fields[field.name].required" class="error">Campo requerido</span>
-            <span v-show="!$v.form.fields[field.name].minLength" class="error">Minimo {{ $v.form.fields[field.name].$params.minLength ? $v.form.fields[field.name].$params.minLength.min : '' }} caracteres</span>
+            <span v-show="!$v.forms[formName].fields[field.name].required" class="error">Campo requerido</span>
+            <span v-show="!$v.forms[formName].fields[field.name].minLength" class="error">Minimo {{ $v.forms[formName].fields[field.name].$params.minLength ? $v.forms[formName].fields[field.name].$params.minLength.min : '' }} caracteres</span>
           </div>
           <!-- .lazy is used to trigger a model update on blur -->
           <input
             :id="field.name"
             :key="field.name"
-            v-model.trim.lazy="form.fields[field.name]"
+            v-model.trim.lazy="forms[formName].fields[field.name]"
             :type="field.type"
             class="form-field"
             :name="field.name"
-            @blur="$v.form.fields[field.name].$touch()"
+            @blur="$v.forms[formName].fields[field.name].$touch()"
           >
         </template>
       </div>
-      <button class="form-button" :class="{green}" type="submit" :form="formName" value="Submit">
+      <button
+        :disabled="disabledForm"
+        class="form-button"
+        :class="{green}"
+        type="submit"
+        :form="formName"
+        value="Submit"
+      >
         {{ buttonLabel }}
       </button>
     </form>
@@ -143,91 +150,64 @@ export default Vue.extend({
   },
   data () {
     return {
-      form: {
-        fields: {}
+      forms: {
+        aliados: {
+          fields: {}
+        },
+        user: {
+          fields: {}
+        }
       }
     }
   },
-<<<<<<< HEAD
   computed: {
     disabledForm ():boolean {
       return this.$v.forms[this.formName].$invalid
     }
   },
-<<<<<<< HEAD
-<<<<<<< HEAD
-  methods: {
-    encode (data:any):string {
-      return Object.keys(data)
-        .map(
-          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-        )
-        .join('&')
-    },
-    submitForm () {
-      if (this.disabledForm) {
-        this.submitted = true
-      } else {
-        const axiosConfig = {
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }
-        const payload = this.forms[this.formName].fields
-        this.$axios.post(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-          'https://mekaniko.cl/',
-=======
-          '/',
->>>>>>> parent of a70c01d (Using fetch API)
-=======
-          '/',
->>>>>>> parent of c36180e (Merge pull request #4 from Hendersonpinto/ajax-form-submission)
-=======
-          '/',
->>>>>>> parent of f7c480c (added server origin to post request)
-          this.encode({
-            'form-name': this.formName,
-            ...payload
-          }),
-          axiosConfig
-        )
-      }
-    }
-  },
-=======
->>>>>>> parent of 463449b (Merge pull request #3 from Hendersonpinto/ajax-form-submission)
-=======
->>>>>>> parent of e0735e4 (Added ajax form submission)
   // I need to specify the names of the expected forms. They should be separated.
-=======
->>>>>>> parent of 8f5dc98 (Merge pull request #2 from Hendersonpinto/submit-button)
   validations: {
-    form: {
-      fields: {
-        name: {
-          required,
-          minLength: minLength(3)
-        },
-        city: {
-          required,
-          minLength: minLength(0)
-        },
-        business: {
-          required,
-          minLength: minLength(0)
-        },
-        phone: {
-          required,
-          validatePhone,
-          minLength: minLength(0)
-        },
-        email: {
-          required,
-          email,
-          minLength: minLength(0)
+    forms: {
+      aliados: {
+        fields: {
+          name: {
+            required,
+            minLength: minLength(3)
+          },
+          business: {
+            required,
+            minLength: minLength(0)
+          },
+          phone: {
+            required,
+            validatePhone,
+            minLength: minLength(0)
+          },
+          email: {
+            required,
+            email,
+            minLength: minLength(0)
+          }
+        }
+      },
+      user: {
+        fields: {
+          name: {
+            required,
+            minLength: minLength(3)
+          },
+          city: {
+            required,
+            minLength: minLength(0)
+          },
+          email: {
+            required,
+            email,
+            minLength: minLength(0)
+          }
         }
       }
+
     }
   }
 })
