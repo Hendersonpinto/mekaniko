@@ -166,6 +166,7 @@ export default Vue.extend({
     }
   },
 <<<<<<< HEAD
+<<<<<<< HEAD
   methods: {
     encode (data:any):string {
       return Object.keys(data)
@@ -207,6 +208,8 @@ export default Vue.extend({
   },
 =======
 >>>>>>> parent of 463449b (Merge pull request #3 from Hendersonpinto/ajax-form-submission)
+=======
+>>>>>>> parent of e0735e4 (Added ajax form submission)
   // I need to specify the names of the expected forms. They should be separated.
   validations: {
     forms: {
