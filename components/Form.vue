@@ -18,7 +18,7 @@
       @submit.prevent="submitForm"
     >
       <!-- This field is needed in order for the form to work. The name attribute has to be "form-name" -->
-      <input type="hidden" name="form-name" :value="formName">
+      <!-- <input type="hidden" name="form-name" :value="formName"> -->
       <!-- This field works as our honeypot -->
       <p class="hidden-field">
         <label>Don’t fill this out: <input name="bot-field"></label>
@@ -180,14 +180,14 @@ export default Vue.extend({
         this.submitted = true
       } else {
         const payload = this.forms[this.formName].fields
-        fetch('/', {
+        fetch(`/${this.formName}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: this.encode({
             'form-name': this.formName,
             ...payload
           })
-        }).then(() => console.log('successful!')).catch(error => alert(error))
+        }).then(() => console.log('successfuld!')).catch(error => alert(error))
       }
     }
   },
