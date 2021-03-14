@@ -15,6 +15,7 @@
       data-netlify="true"
       netlify-honeypot="bot-field"
       method="post"
+      @submit.prevent="submitForm"
     >
       <!-- This field is needed in order for the form to work. The name attribute has to be "form-name" -->
       <input type="hidden" name="form-name" :value="formName">
@@ -83,7 +84,6 @@
         </template>
       </div>
       <button
-        :disabled="disabledForm"
         class="form-button"
         :class="{green}"
         type="submit"
@@ -92,6 +92,7 @@
       >
         {{ buttonLabel }}
       </button>
+      <span v-if="submitted && disabledForm" class="error">Todos los campos deben estar llenos!</span>
     </form>
     <p class="footer">
       {{ footer.text }} <nuxt-link :to="footer.url">
@@ -157,12 +158,40 @@ export default Vue.extend({
         user: {
           fields: {}
         }
-      }
+      },
+      submitted: false
     }
   },
   computed: {
     disabledForm ():boolean {
       return this.$v.forms[this.formName].$invalid
+    }
+  },
+  methods: {
+    encode (data:any):string {
+      return Object.keys(data)
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join('&')
+    },
+    submitForm () {
+      if (this.disabledForm) {
+        this.submitted = true
+      } else {
+        const axiosConfig = {
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        }
+        const payload = this.forms[this.formName].fields
+        this.$axios.post(
+          '/',
+          this.encode({
+            'form-name': this.formName,
+            ...payload
+          }),
+          axiosConfig
+        )
+      }
     }
   },
   // I need to specify the names of the expected forms. They should be separated.
@@ -236,6 +265,7 @@ export default Vue.extend({
     margin: auto;
     margin-top: 40px;
     margin-bottom: 16px;
+    position: relative;
 
     .hidden-field {
       display: none;
@@ -291,6 +321,15 @@ export default Vue.extend({
           border: 1px solid red;
         }
       }
+    }
+
+    span.error {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 15px);
+      color: red;
+      text-align: center;
     }
   }
 
