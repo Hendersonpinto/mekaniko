@@ -37,12 +37,13 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
+    'video.js/dist/video-js.css',
     '~/assets/scss/typography.scss'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/vuelidate'
+    '~/plugins/vuelidate', '~/plugins/vimeo-player', '~/plugins/nuxt-video.client.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -86,6 +87,9 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    vendor: [
+      'vue-vimeo-player'
+    ]
   },
 
   styleResources: {
