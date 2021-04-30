@@ -22,13 +22,29 @@
         </nuxt-link>
       </div>
     </div>
-    <img v-if="$mq === 'desktop'" src="~/assets/images/mechanic.png" class="mechanic">
-    <img v-if="$mq === 'desktop'" src="~/assets/images/mechanic2.png" class="mechanic2">
-    <img v-if="$mq === 'desktop'" src="~/assets/images/girl-on-car.png" class="girl">
+    <!-- <div id="intro-video" ref="iframe-wrapper" class="iframe-wrapper">
+      <iframe
+        src="https://player.vimeo.com/video/542290658?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+        frameborder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        title="final_6084609644b14600294d777f_936667100"
+      />
+    </div> -->
+    <!-- <ClientOnly>
+      <vimeo-player ref="player" :video-id="videoId" :controls="false" />
+    </ClientOnly> -->
+    <!-- <video src="~/assets/videos/mekaniko.mp4" /> -->
+    <div class="right">
+      <div
+        v-video-player:myVideoPlayer="playerOptions"
+        class="video-player-box"
+        :playsinline="playsinline"
+      />
+    </div>
     <img src="~/assets/images/grid.png" class="gridd">
     <BlobOne class="blob1" />
     <BlobTwo class="blob2" />
-    <ArrowSmall class="arrow-small" />
     <ArrowBig class="arrow-big" />
     <TriangleSvg class="triangle1" />
     <TriangleSvg class="triangle2" />
@@ -50,7 +66,6 @@ import Vue from 'vue'
 import Scribble from '~/assets/svgs/scribble.svg?inline'
 import BlobOne from '~/assets/svgs/blob1.svg?inline'
 import BlobTwo from '~/assets/svgs/blob2.svg?inline'
-import ArrowSmall from '~/assets/svgs/arrow-small.svg?inline'
 import ArrowBig from '~/assets/svgs/arrow-big.svg?inline'
 import TriangleSvg from '~/assets/svgs/triangle.svg?inline'
 import DiamondSvg from '~/assets/svgs/diamond.svg?inline'
@@ -59,13 +74,31 @@ import CrossSvg from '~/assets/svgs/cross.svg?inline'
 export default Vue.extend({
   components: {
     Scribble,
-    ArrowSmall,
     ArrowBig,
     TriangleSvg,
     DiamondSvg,
     CrossSvg,
     BlobOne,
     BlobTwo
+  },
+  data () {
+    return {
+      videoId: '542290658',
+      // component options
+      playsinline: true,
+      // videojs options
+      playerOptions: {
+        poster: require('../assets/images/image129.png'),
+        fluid: true,
+        muted: false,
+        language: 'en',
+        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        sources: [{
+          type: 'video/mp4',
+          src: require('../assets/videos/mekaniko.mp4')
+        }]
+      }
+    }
   },
   head () {
     return {
@@ -146,6 +179,18 @@ main {
         margin-top: 12px;
         margin-bottom: 12px;
       }
+    }
+  }
+
+  .right {
+    margin: auto;
+    width: 40vw;
+
+    .video-player-box {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      z-index: 99;
     }
   }
 
@@ -258,15 +303,21 @@ main {
   }
 
   @include screenSizes(phone) {
+    height: auto;
+    flex-direction: column;
+    padding-top: 110px;
+    position: relative;
+
     .left {
       width: 100vw;
       margin: 0;
       align-items: initial;
 
       .text {
-        width: 260px;
-        margin-left: 24px;
+        width: 320px;
+        margin: auto;
         margin-bottom: 80px;
+        text-align: center;
 
         h1 {
           margin-bottom: 24px;
@@ -279,12 +330,17 @@ main {
 
         svg {
           position: absolute;
-          top: 75px;
+          top: 36px;
           right: 0;
-          left: -8px;
+          left: 166px;
           width: 50%;
         }
       }
+    }
+
+    .right {
+      width: 100%;
+      padding: 80px 30px;
     }
 
     .buttons {
@@ -351,6 +407,8 @@ main {
 
     .left {
       /* sd */
+      margin-right: 120px;
+
       .text {
         svg {
           top: 177px;
