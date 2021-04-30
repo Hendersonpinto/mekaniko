@@ -303,15 +303,21 @@ main {
   }
 
   @include screenSizes(phone) {
+    height: auto;
+    flex-direction: column;
+    padding-top: 110px;
+    position: relative;
+
     .left {
       width: 100vw;
       margin: 0;
       align-items: initial;
 
       .text {
-        width: 260px;
-        margin-left: 24px;
+        width: 320px;
+        margin: auto;
         margin-bottom: 80px;
+        text-align: center;
 
         h1 {
           margin-bottom: 24px;
@@ -324,12 +330,17 @@ main {
 
         svg {
           position: absolute;
-          top: 75px;
+          top: 36px;
           right: 0;
-          left: -8px;
+          left: 166px;
           width: 50%;
         }
       }
+    }
+
+    .right {
+      width: 100%;
+      padding: 80px 30px;
     }
 
     .buttons {
@@ -396,6 +407,8 @@ main {
 
     .left {
       /* sd */
+      margin-right: 120px;
+
       .text {
         svg {
           top: 177px;

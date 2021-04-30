@@ -32,7 +32,11 @@ html {
 
 body {
   &.over-hidden {
-    overflow: hidden
+    overflow: hidden;
+
+    @include screenSizes(phone) {
+      overflow: visible;
+    }
   }
 }
 

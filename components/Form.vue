@@ -329,7 +329,7 @@ export default Vue.extend({
   }
 
   @include screenSizes(phone) {
-    width: 300px;
+    width: 95%;
     padding: 12px;
     height: auto;
 
